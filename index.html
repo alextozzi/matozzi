@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matozzi — Import · Export · Advisory</title>
+<meta name="description" content="Matozzi is an Antwerp-based partner in import, export and advisory — connecting suppliers and markets across borders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1929;
+    --navy-soft:#0f2233;
+    --gold:#C9A55A;
+    --gold-bright:#d9b96f;
+    --cream:#F5EDDA;
+    --grey:#7A90AA;
+    --line:rgba(201,165,90,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--navy);
+    color:var(--cream);
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Lora',serif;font-weight:500;line-height:1.15}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--gold);font-weight:400;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    background:rgba(11,25,41,0);
+    transition:background .4s ease,padding .4s ease;
+  }
+  nav.scrolled{background:rgba(11,25,41,.92);padding:12px 28px;backdrop-filter:blur(8px)}
+  nav .brand{display:flex;align-items:center;gap:12px}
+  nav .brand svg{height:34px;width:auto}
+  nav .links{display:flex;gap:34px;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+  nav .links a{color:var(--cream);opacity:.78;transition:opacity .25s}
+  nav .links a:hover{opacity:1;color:var(--gold-bright)}
+  .menu-btn{display:none;background:none;border:0;color:var(--cream);cursor:pointer}
+  @media(max-width:760px){
+    nav .links{display:none}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;align-items:center;
+    overflow:hidden;
+  }
+  .hero-compass{
+    position:absolute;top:50%;left:clamp(-340px,-18vw,-120px);transform:translateY(-50%);
+    width:min(820px,90vw);height:min(820px,90vw);
+    opacity:.5;pointer-events:none;z-index:0;
+  }
+  .hero-inner{position:relative;z-index:2;width:100%}
+  .hero .mono{height:clamp(90px,15vw,150px);width:auto;margin-bottom:34px;display:block}
+  .hero h1{
+    font-size:clamp(2.4rem,6vw,4.6rem);
+    color:var(--cream);letter-spacing:-.01em;max-width:15ch;
+  }
+  .hero h1 .accent{color:var(--gold)}
+  .hero p.lead{
+    margin-top:26px;max-width:46ch;font-size:clamp(1rem,1.6vw,1.18rem);
+    color:var(--grey);
+  }
+  .hero .cta-row{margin-top:40px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-block;padding:15px 34px;
+    font-family:'Poppins';font-weight:400;font-size:.78rem;
+    letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
+    transition:all .3s ease;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy);border:1px solid var(--gold)}
+  .btn-gold:hover{background:var(--gold-bright);border-color:var(--gold-bright);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+  .scroll-hint{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;
+    font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey);
+    display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.7;
+  }
+  .scroll-hint .dash{width:1px;height:42px;background:linear-gradient(var(--gold),transparent)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
+  .divider-top{border-top:1px solid var(--line)}
+  .sec-label{display:flex;align-items:center;gap:16px;margin-bottom:34px}
+  .sec-label .bar{width:46px;height:1px;background:var(--gold)}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .about h2{font-size:clamp(1.8rem,3.4vw,2.8rem);color:var(--cream)}
+  .about .body p{color:var(--grey);font-size:1.05rem}
+  .about .body p+p{margin-top:18px}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px}}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--navy-soft)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:20px}
+  .svc{
+    border:1px solid var(--line);padding:40px 32px;
+    transition:border-color .35s ease,transform .35s ease,background .35s ease;
+    position:relative;overflow:hidden;
+  }
+  .svc:hover{border-color:var(--gold);transform:translateY(-4px);background:rgba(201,165,90,.04)}
+  .svc .num{font-family:'Lora';font-size:.9rem;color:var(--gold);letter-spacing:.1em}
+  .svc h3{font-size:1.5rem;margin:14px 0 14px;color:var(--cream)}
+  .svc p{color:var(--grey);font-size:.97rem}
+  @media(max-width:820px){.svc-grid{grid-template-columns:1fr;gap:18px}}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+  .contact h2{font-size:clamp(1.9rem,3.6vw,3rem);color:var(--cream);max-width:14ch}
+  .contact p.lead{color:var(--grey);margin-top:22px;max-width:42ch}
+  .contact-card{border:1px solid var(--line);padding:40px}
+  .contact-card .row{padding:18px 0;border-bottom:1px solid var(--line)}
+  .contact-card .row:last-child{border-bottom:0}
+  .contact-card .k{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .contact-card .v{color:var(--cream);font-size:1.05rem}
+  .contact-card .v a:hover{color:var(--gold-bright)}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;gap:34px}}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:46px 0}
+  .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot-inner svg{height:28px;width:auto}
+  .foot-meta{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--grey)}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <a class="brand" href="#top" aria-label="Matozzi home">
+    <!-- horizontaal logo (mono + wordmark) -->
+    <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Matozzi">
+      <text x="0" y="64" font-family="Lora, serif" font-weight="600" font-size="74" fill="#C9A55A">M</text>
+      <text x="58" y="64" font-family="Lora, serif" font-weight="600" font-size="74" fill="none" stroke="#C9A55A" stroke-width="1.4">T</text>
+      <text x="120" y="58" font-family="Lora, serif" font-weight="500" font-size="40" letter-spacing="5" fill="#C9A55A">MAT</text>
+      <text x="232" y="58" font-family="Lora, serif" font-weight="500" font-size="40" letter-spacing="5" fill="none" stroke="#C9A55A" stroke-width=".8">OZZI</text>
+    </svg>
+  </a>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <!-- kompas + koffiebonen achtergrond -->
+  <svg class="hero-compass" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#C9A55A" stroke-width="0.8">
+      <circle cx="350" cy="350" r="330"/>
+      <circle cx="350" cy="350" r="267" stroke-width="0.7"/>
+      <circle cx="350" cy="350" r="205" stroke-width="0.6"/>
+      <circle cx="350" cy="350" r="142" stroke-width="0.6"/>
+      <circle cx="350" cy="350" r="79" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="30" stroke-width="0.4"/>
+      <line x1="20" y1="350" x2="680" y2="350" stroke-width="0.5"/>
+      <line x1="350" y1="20" x2="350" y2="680" stroke-width="0.5"/>
+      <line x1="116" y1="116" x2="584" y2="584" stroke-width="0.35"/>
+      <line x1="584" y1="116" x2="116" y2="584" stroke-width="0.35"/>
+      <polygon points="350,20 680,350 350,680 20,350" stroke-width="0.5"/>
+      <polygon points="350,112 588,350 350,588 112,350" stroke-width="0.35"/>
+    </g>
+    <!-- noordpijl -->
+    <polygon points="350,28 357,52 350,46 343,52" fill="#C9A55A" opacity=".6"/>
+    <!-- koffiebonen -->
+    <g fill="none" stroke="#C9A55A" stroke-width="1.1" opacity=".9">
+      <g transform="rotate(34 250 200)">
+        <ellipse cx="250" cy="200" rx="22" ry="33"/>
+        <path d="M250 173 C 269 188, 231 212, 250 227" stroke-width="1"/>
+      </g>
+      <g transform="rotate(-20 470 210)">
+        <ellipse cx="470" cy="210" rx="20" ry="30"/>
+        <path d="M470 185 C 487 198, 453 222, 470 235" stroke-width="1"/>
+      </g>
+      <g transform="rotate(60 230 470)">
+        <ellipse cx="230" cy="470" rx="21" ry="31"/>
+        <path d="M230 444 C 248 458, 212 482, 230 496" stroke-width="1"/>
+      </g>
+      <g transform="rotate(-44 480 478)">
+        <ellipse cx="480" cy="478" rx="19" ry="29"/>
+        <path d="M480 453 C 496 466, 464 490, 480 503" stroke-width="1"/>
+      </g>
+    </g>
+    <!-- bubbels -->
+    <g fill="none" stroke="#C9A55A" stroke-width=".7" opacity=".75">
+      <circle cx="318" cy="150" r="16"/><circle cx="312" cy="142" r="2.4" fill="#C9A55A"/>
+      <circle cx="540" cy="300" r="11"/><circle cx="536" cy="296" r="1.7" fill="#C9A55A"/>
+      <circle cx="180" cy="330" r="13"/><circle cx="175" cy="325" r="2" fill="#C9A55A"/>
+      <circle cx="360" cy="560" r="12"/><circle cx="355" cy="555" r="1.8" fill="#C9A55A"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <svg class="mono" viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MT monogram">
+      <text x="0" y="104" font-family="Lora, serif" font-weight="600" font-size="128" fill="#C9A55A">M</text>
+      <text x="96" y="104" font-family="Lora, serif" font-weight="600" font-size="128" fill="none" stroke="#C9A55A" stroke-width="1.7">T</text>
+    </svg>
+    <p class="eyebrow reveal">Import · Export · Advisory</p>
+    <h1 class="reveal" style="margin-top:18px">Connecting markets,<br><span class="accent">delivering trust.</span></h1>
+    <p class="lead reveal">Matozzi is an dutch partner in international trade — bridging suppliers and markets across borders, with the precision of logistics and the insight of advisory.</p>
+    <div class="cta-row reveal">
+      <a href="#contact" class="btn btn-gold">Get in touch</a>
+      <a href="#services" class="btn btn-ghost">Our services</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true"><span>Scroll</span><span class="dash"></span></div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section class="block about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="sec-label"><span class="bar"></span><span class="eyebrow">Who we are</span></div>
+      <h2>A bridge between suppliers and markets.</h2>
+    </div>
+    <div class="body reveal">
+      <p>Founded in Antwerp, Matozzi brings together international trade expertise and hands-on advisory. We help businesses source, move and sell goods across borders — combining the precision of logistics with strategic guidance.</p>
+      <p>Whether you're entering a new market or scaling an existing supply chain, we navigate the complexity so you can focus on growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="block services divider-top" id="services">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="bar"></span><span class="eyebrow">What we do</span></div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <span class="num">01</span>
+        <h3>Import</h3>
+        <p>We source and bring products to your market reliably — managing suppliers, customs and logistics from origin to destination.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="num">02</span>
+        <h3>Export</h3>
+        <p>We open doors to international markets, connecting your products with the right partners and handling the full export process.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="num">03</span>
+        <h3>Advisory</h3>
+        <p>Strategic guidance on trade, sourcing and market entry — practical advice grounded in real international experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="block contact divider-top" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="sec-label"><span class="bar"></span><span class="eyebrow">Get in touch</span></div>
+      <h2>Let's work together.</h2>
+      <p class="lead">Ready to expand your reach? Reach out and let's explore the possibilities.</p>
+    </div>
+    <div class="contact-card reveal">
+      <div class="row">
+        <div class="k">Email</div>
+        <div class="v"><a href="mailto:info @matozzi.com">info @matozzi.com</a></div>
+      </div>
+      <div class="row">
+        <div class="k">Phone</div>
+        <div class="v"><a href="tel:+...></a></div>
+      </div>
+      <div class="row">
+        <div class="k">Location</div>
+        <div class="v">Netherlands</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-inner">
+    <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Matozzi">
+      <text x="0" y="64" font-family="Lora, serif" font-weight="600" font-size="74" fill="#C9A55A">M</text>
+      <text x="58" y="64" font-family="Lora, serif" font-weight="600" font-size="74" fill="none" stroke="#C9A55A" stroke-width="1.4">T</text>
+      <text x="120" y="58" font-family="Lora, serif" font-weight="500" font-size="40" letter-spacing="5" fill="#C9A55A">MAT</text>
+      <text x="232" y="58" font-family="Lora, serif" font-weight="500" font-size="40" letter-spacing="5" fill="none" stroke="#C9A55A" stroke-width=".8">OZZI</text>
+    </svg>
+    <div class="foot-meta">© 2025 Matozzi · Antwerp, Belgium</div>
+  </div>
+</footer>
+
+<script>
+  // nav background on scroll
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>40)};
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  // reveal on scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(i%4*60)+'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
