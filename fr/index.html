@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matozzi — Café · Champagne · Import & Export</title>
-<meta name="description" content="Matozzi est un partenaire commercial établi aux Pays-Bas, spécialisé dans le café premium et le champagne — import, export et conseil au-delà des frontières.">
+<title>Matozzi — Import &amp; Export · Conseil Technique</title>
+<meta name="description" content="Matozzi est un partenaire basé aux Pays-Bas dans le café et le champagne premium — et dans le conseil technique via des experts offshore expérimentés.">
 <link rel="alternate" hreflang="en" href="https://matozzi.com/">
 <link rel="alternate" hreflang="nl" href="https://matozzi.com/nl/">
 <link rel="alternate" hreflang="fr" href="https://matozzi.com/fr/">
@@ -27,7 +27,7 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(11,25,41,0);transition:background .4s ease,padding .4s ease}
   nav.scrolled{background:rgba(11,25,41,.92);padding:12px 28px;backdrop-filter:blur(8px)}
   nav .brand svg{height:36px;width:auto}
-  nav .links{display:flex;gap:34px;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+  nav .links{display:flex;gap:24px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
   nav .links a{color:var(--cream);opacity:.78;transition:opacity .25s}
   nav .links a:hover{opacity:1;color:var(--gold-bright)}
   nav .right{display:flex;align-items:center;gap:28px}
@@ -57,6 +57,17 @@
   .divider-top{border-top:1px solid var(--line)}
   .sec-label{display:flex;align-items:center;gap:16px;margin-bottom:34px}
   .sec-label .bar{width:46px;height:1px;background:var(--gold)}
+  .pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px}
+  .pillar-card{border:1px solid var(--line);padding:40px 38px;transition:border-color .35s ease,transform .35s ease}
+  .pillar-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+  .pillar-card .p-icon{width:34px;height:34px;margin-bottom:22px}
+  .pillar-card .p-eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  .pillar-card h3{font-size:1.7rem;margin:10px 0 14px;color:var(--cream)}
+  .pillar-card p{color:var(--grey);font-size:.98rem}
+  .pillar-card .p-link{display:inline-block;margin-top:22px;font-size:.8rem;letter-spacing:.1em;color:var(--gold);border-bottom:1px solid transparent;transition:border-color .25s,color .25s}
+  .pillar-card .p-link:hover{color:var(--gold-bright);border-color:var(--gold-bright)}
+  @media(max-width:820px){.pillars-grid{grid-template-columns:1fr;gap:18px}}
+  .badge-new{display:inline-block;margin-left:12px;padding:3px 11px;border:1px solid var(--gold);color:var(--gold);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;vertical-align:middle}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .about h2{font-size:clamp(1.8rem,3.4vw,2.8rem);color:var(--cream)}
   .about .body p{color:var(--grey);font-size:1.05rem}
@@ -92,8 +103,10 @@
   @media(max-width:820px){.contact-grid{grid-template-columns:1fr;gap:34px}}
   .cform{display:flex;flex-direction:column;gap:18px}
   .cform label{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;font-weight:400}
-  .cform input,.cform textarea{width:100%;background:var(--navy);border:1px solid var(--line);color:var(--cream);font-family:'Poppins',sans-serif;font-weight:300;font-size:1rem;padding:13px 16px;transition:border-color .3s ease}
-  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--gold)}
+  .cform input,.cform textarea,.cform select{width:100%;background:var(--navy);border:1px solid var(--line);color:var(--cream);font-family:'Poppins',sans-serif;font-weight:300;font-size:1rem;padding:13px 16px;transition:border-color .3s ease}
+  .cform input:focus,.cform textarea:focus,.cform select:focus{outline:none;border-color:var(--gold)}
+  .cform select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6 9l6 6 6-6' fill='none' stroke='%23C9A55A' stroke-width='1.6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:14px;padding-right:40px;cursor:pointer}
+  .cform select option{background:var(--navy-soft);color:var(--cream)}
   .cform textarea{min-height:130px;resize:vertical}
   .cform .btn{align-self:flex-start;margin-top:4px}
   .cform .btn:disabled{opacity:.6;cursor:wait;transform:none}
@@ -122,7 +135,7 @@
   </a>
   <div class="right">
     <div class="links">
-      <a href="#about">À propos</a><a href="#services">Services</a><a href="#contact">Contact</a>
+      <a href="#about">À propos</a><a href="#import-export">Import &amp; Export</a><a href="#technisch-advies">Conseil Technique</a><a href="#contact">Contact</a>
     </div>
     <div class="lang-switch">
       <a href="/">EN</a><span class="sep"></span><a href="/nl/">NL</a><span class="sep"></span><a href="/fr/" class="active">FR</a>
@@ -157,24 +170,49 @@
       <text x="0" y="104" font-family="Lora, serif" font-weight="600" font-size="128" fill="#C9A55A">M</text>
       <text x="120" y="104" font-family="Lora, serif" font-weight="600" font-size="128" fill="none" stroke="#C9A55A" stroke-width="1.7">T</text>
     </svg>
-    <p class="eyebrow reveal">Café · Champagne · Négoce</p>
-    <h1 class="reveal" style="margin-top:18px">Café d'exception,<br><span class="accent">champagne raffiné.</span></h1>
-    <p class="lead reveal">Matozzi est un partenaire de commerce international établi aux Pays-Bas, spécialisé dans le café premium et le champagne. Nous amenons des produits d'exception du producteur au marché — avec une gamme appelée à s'élargir.</p>
+    <p class="eyebrow reveal">Import &amp; Export · Conseil Technique</p>
+    <h1 class="reveal" style="margin-top:18px">Du café et du champagne<br>à l'<span class="accent">expertise offshore.</span></h1>
+    <p class="lead reveal">Matozzi est un partenaire basé aux Pays-Bas à deux visages : import et export de café et de champagne premium, et conseil technique par des experts offshore expérimentés. Deux activités, la même qualité et la même fiabilité.</p>
     <div class="cta-row reveal">
       <a href="#contact" class="btn btn-gold">Nous contacter</a>
-      <a href="#services" class="btn btn-ghost">Nos services</a>
+      <a href="#pijlers" class="btn btn-ghost">Découvrir nos piliers</a>
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true"><span>Défiler</span><span class="dash"></span></div>
 </header>
+<section class="block pijlers divider-top" id="pijlers">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="bar"></span><span class="eyebrow">Deux piliers</span></div>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <svg class="p-icon" viewBox="0 0 34 34" fill="none" stroke="#C9A55A" stroke-width="1.3" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10.5 17 4l13 6.5-13 6.5-13-6.5Z"/><path d="M4 10.5v13L17 30l13-6.5v-13"/><path d="M17 17v13"/>
+        </svg>
+        <div class="p-eyebrow">Pilier 01</div>
+        <h3>Import &amp; Export</h3>
+        <p>Café, champagne et un assortiment en croissance — du producteur au marché, avec le même soin à chaque étape.</p>
+        <a href="#import-export" class="p-link">Découvrir notre offre →</a>
+      </div>
+      <div class="pillar-card reveal">
+        <svg class="p-icon" viewBox="0 0 34 34" fill="none" stroke="#C9A55A" stroke-width="1.3" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="17" cy="17" r="6"/><path d="M17 3v4M17 27v4M31 17h-4M7 17H3M26.5 7.5l-2.8 2.8M10.3 23.7l-2.8 2.8M26.5 26.5l-2.8-2.8M10.3 10.3 7.5 7.5"/>
+        </svg>
+        <div class="p-eyebrow">Pilier 02</div>
+        <h3>Conseil Technique</h3>
+        <p>Détachement d'experts offshore expérimentés — la bonne expertise, précisément quand vous en avez besoin.</p>
+        <a href="#technisch-advies" class="p-link">Découvrir notre expertise →</a>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="block about" id="about">
   <div class="wrap about-grid">
     <div class="reveal">
       <div class="sec-label"><span class="bar"></span><span class="eyebrow">Qui nous sommes</span></div>
-      <h2>Spécialiste du café et du champagne.</h2>
+      <h2>Deux piliers, une seule maison.</h2>
       <div class="body" style="margin-top:24px">
-        <p>Fondée aux Pays-Bas, Matozzi allie expertise du commerce international et passion de la qualité. Notre cœur de métier : deux produits de caractère, le café premium et le champagne raffiné. Nous sélectionnons, importons et distribuons — du producteur à votre marché.</p>
-        <p>Nous restons par ailleurs un partenaire commercial généraliste : pour d'autres produits et les extensions futures de notre gamme, nous gérons la complexité afin que vous puissiez vous concentrer sur la croissance.</p>
+        <p>En tant que partenaire commercial, nous sélectionnons, importons et distribuons du café premium et du champagne raffiné — du producteur à votre marché, avec un assortiment qui continue de croître. Nous appliquons le même soin à chaque nouveau produit ajouté.</p>
+        <p>En tant que bureau de conseil technique, nous détachons des experts offshore expérimentés auprès d'entreprises qui ont besoin de la bonne expertise au bon moment. Une activité différente, le même principe : qualité et fiabilité sur lesquelles vous pouvez compter.</p>
       </div>
     </div>
     <div class="about-photo reveal">
@@ -182,22 +220,38 @@
     </div>
   </div>
 </section>
-<section class="block services divider-top" id="services">
+<section class="block services divider-top" id="import-export">
   <div class="wrap">
-    <div class="sec-label reveal"><span class="bar"></span><span class="eyebrow">Ce que nous faisons</span></div>
+    <div class="sec-label reveal"><span class="bar"></span><span class="eyebrow">Pilier 01 — Import &amp; Export</span></div>
     <div class="svc-grid">
       <div class="svc reveal">
         <div class="svc-img"><img src="https://images.unsplash.com/photo-1513530176992-0cf39c4cbed4?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="svc-body"><span class="num">01</span><h3>Café</h3><p>Des grains de café premium, soigneusement sélectionnés auprès de producteurs de confiance. Nous gérons toute la chaîne — de l'achat et du contrôle qualité à la logistique et la livraison.</p></div>
+        <div class="svc-body"><span class="num">01</span><h3>Café</h3><p>Grains de café premium, soigneusement sélectionnés chez des producteurs de confiance. Nous gérons toute la chaîne — de l'achat et du contrôle qualité à la logistique et la livraison.</p></div>
       </div>
       <div class="svc reveal">
         <div class="svc-img"><img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="svc-body"><span class="num">02</span><h3>Champagne</h3><p>Des champagnes raffinés pour l'horeca, le retail et la distribution. Importés en direct, avec le souci de l'authenticité et une qualité qui fait la différence.</p></div>
+        <div class="svc-body"><span class="num">02</span><h3>Champagne</h3><p>Champagnes raffinés pour l'horeca, le commerce de détail et la distribution. Importés directement, avec un souci d'authenticité et de qualité qui fait la différence.</p></div>
       </div>
       <div class="svc reveal">
         <div class="svc-img"><img src="https://images.unsplash.com/photo-1690983323458-ec4a54fc9552?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy"></div>
-        <div class="svc-body"><span class="num">03</span><h3>Négoce &amp; conseil</h3><p>Notre base reste large : import, export et conseil stratégique. Au-delà du café et du champagne, nous explorons de nouvelles opportunités — notre gamme évolue avec l'avenir.</p></div>
+        <div class="svc-body"><span class="num">03</span><h3>Assortiment élargi</h3><p>Au-delà du café et du champagne, nous élargissons progressivement notre assortiment. De nouveaux produits, avec le même soin pour l'origine, la qualité et une livraison fiable.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+<section class="block about divider-top" id="technisch-advies">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="https://images.unsplash.com/photo-1503427315916-2ba435dee667?fm=jpg&q=70&w=1200&auto=format&fit=crop" alt="Éoliennes offshore en mer" loading="lazy">
+    </div>
+    <div class="reveal">
+      <div class="sec-label"><span class="bar"></span><span class="eyebrow">Pilier 02 — Conseil Technique</span><span class="badge-new">Nouveau</span></div>
+      <h2>L'expertise offshore, précisément quand vous en avez besoin.</h2>
+      <div class="body" style="margin-top:24px">
+        <p>Matozzi détache des profils techniques expérimentés auprès d'entreprises actives dans le secteur offshore — de l'installation et la maintenance à la sécurité et au suivi de projet. Nous connaissons le secteur et les personnes, et associons la bonne expertise à votre projet au moment où vous en avez besoin.</p>
+        <p>Qu'il s'agisse d'une mission de courte durée ou d'un engagement plus long : nous veillons à la bonne adéquation, rapidement et sans détour.</p>
+      </div>
+      <a href="#contact" class="btn btn-gold reveal" style="margin-top:32px">Nous contacter</a>
     </div>
   </div>
 </section>
@@ -206,7 +260,7 @@
     <div class="reveal">
       <div class="sec-label"><span class="bar"></span><span class="eyebrow">Contact</span></div>
       <h2>Travaillons ensemble.</h2>
-      <p class="lead">Prêt à élargir votre portée ? Contactez-nous et explorons ensemble les possibilités.</p>
+      <p class="lead">Prêt à élargir votre portée, ou à la recherche de la bonne expertise offshore ? Dites-nous de quoi il s'agit, et votre message arrivera directement à la bonne personne.</p>
     </div>
     <div class="contact-card reveal">
       <form class="cform" id="contact-form" action="https://formsubmit.co/info@matozzi.com" method="POST" novalidate>
@@ -215,12 +269,20 @@
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div><label for="cf-name">Nom</label><input id="cf-name" type="text" name="name" required autocomplete="name"></div>
         <div><label for="cf-email">E-mail</label><input id="cf-email" type="email" name="email" required autocomplete="email"></div>
+        <div><label for="cf-interesse">Intérêt</label>
+          <select id="cf-interesse" name="interesse" required>
+            <option value="" disabled selected>Choisissez un sujet</option>
+            <option value="Import &amp; export">Import &amp; export</option>
+            <option value="Conseil technique">Conseil technique</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
         <div><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
         <button type="submit" class="btn btn-gold">Envoyer le message</button>
         <p class="form-note" id="form-note" role="status"></p>
       </form>
       <div class="contact-meta">
-        <div class="row"><div class="k">Téléphone</div><div class="v"><a href="tel:+31000000000">+31 (0)6 xx xx xx xx</a></div></div>
+        <div class="row"><div class="k">Téléphone</div><div class="v"><a href="tel:+31612408079">+31 (0)6 12 40 80 79</a></div></div>
         <div class="row"><div class="k">Localisation</div><div class="v">Pays-Bas</div></div>
       </div>
     </div>
@@ -246,9 +308,9 @@
   const form=document.getElementById('contact-form');
   if(form){
     const note=document.getElementById('form-note');
-    const MSG_OK='Merci ! Votre message a bien été envoyé — nous vous répondrons rapidement.';
-    const MSG_ERR="Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.";
-    const MSG_WAIT="Un instant — vous ne pouvez envoyer qu'un message par minute.";
+    const MSG_OK='Merci ! Votre message a été envoyé — nous vous recontacterons rapidement.';
+    const MSG_ERR='Une erreur s\'est produite lors de l\'envoi. Veuillez réessayer plus tard.';
+    const MSG_WAIT='Un instant — vous ne pouvez envoyer qu\'un message par minute.';
     const t0=Date.now();let lastSent=0;
     form.addEventListener('submit',async e=>{
       e.preventDefault();
